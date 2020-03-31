@@ -16,3 +16,12 @@ E:\VS2019\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.Properties.Reso
 E:\VS2019\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.csproj.GenerateResource.cache
 E:\VS2019\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.exe
 E:\VS2019\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.pdb
+C:\Users\luck\Desktop\DuplicateFiles\DuplicateFiles\bin\Debug\DuplicateFiles.exe.config
+C:\Users\luck\Desktop\DuplicateFiles\DuplicateFiles\bin\Debug\DuplicateFiles.exe
+C:\Users\luck\Desktop\DuplicateFiles\DuplicateFiles\bin\Debug\DuplicateFiles.pdb
+C:\Users\luck\Desktop\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.csprojAssemblyReference.cache
+C:\Users\luck\Desktop\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.Form1.resources
+C:\Users\luck\Desktop\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.Properties.Resources.resources
+C:\Users\luck\Desktop\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.csproj.GenerateResource.cache
+C:\Users\luck\Desktop\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.exe
+C:\Users\luck\Desktop\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.pdb
