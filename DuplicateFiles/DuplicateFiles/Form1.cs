@@ -53,16 +53,23 @@ namespace DuplicateFiles
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.ShowNewFolderButton = false;
-            fbd.SelectedPath = @"C:\Users\luck\Desktop\新建文件夹";
+            if (strPath != "")
+            {
+                fbd.SelectedPath = strPath;
+            }
             if (fbd.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
+            lblTime.Text = "正在检测";
+            lblTime.Refresh();
             strPath = fbd.SelectedPath;
             lstResult.Clear();
             lbGroup.Items.Clear();
             lbFiles.Items.Clear();
             lblFileCount.Text = "";
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             foreach (string strFile in Directory.GetFiles(fbd.SelectedPath))
             {
                 bool bAdded = false;
@@ -92,6 +99,8 @@ namespace DuplicateFiles
             }
             //MessageBox.Show(GetMD5HashFromFile(@"D:\文档.rar"));
             lblGroupCount.Text = String.Format("共 {0} 组重复文件", lbGroup.Items.Count.ToString());
+            sw.Stop();
+            lblTime.Text = string.Format("用时: {0:0} 秒", sw.Elapsed.TotalSeconds);
         }
 
         private void lbGroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -150,11 +159,11 @@ namespace DuplicateFiles
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void DeleteFile()
         {
             if (lbFiles.SelectedIndex != -1)
             {
-                if(lbFiles.Items.Count == 1)
+                if (lbFiles.Items.Count == 1)
                 {
                     MessageBox.Show("当前组重复文件只剩一个，需要手动删除", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
@@ -173,6 +182,19 @@ namespace DuplicateFiles
                     }
                     lbFiles.Items.RemoveAt(lbFiles.SelectedIndex);
                 }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteFile();
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Delete)
+            {
+                DeleteFile();
             }
         }
     }
