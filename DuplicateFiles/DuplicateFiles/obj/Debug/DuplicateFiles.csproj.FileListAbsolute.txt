@@ -25,3 +25,12 @@ C:\Users\luck\Desktop\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.Pro
 C:\Users\luck\Desktop\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.csproj.GenerateResource.cache
 C:\Users\luck\Desktop\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.exe
 C:\Users\luck\Desktop\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.pdb
+C:\Users\Administrator\Desktop\DuplicateFiles\DuplicateFiles\DuplicateFiles\bin\Debug\DuplicateFiles.exe.config
+C:\Users\Administrator\Desktop\DuplicateFiles\DuplicateFiles\DuplicateFiles\bin\Debug\DuplicateFiles.exe
+C:\Users\Administrator\Desktop\DuplicateFiles\DuplicateFiles\DuplicateFiles\bin\Debug\DuplicateFiles.pdb
+C:\Users\Administrator\Desktop\DuplicateFiles\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\DuplicateFiles\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.Form1.resources
+C:\Users\Administrator\Desktop\DuplicateFiles\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.Properties.Resources.resources
+C:\Users\Administrator\Desktop\DuplicateFiles\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\DuplicateFiles\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.exe
+C:\Users\Administrator\Desktop\DuplicateFiles\DuplicateFiles\DuplicateFiles\obj\Debug\DuplicateFiles.pdb

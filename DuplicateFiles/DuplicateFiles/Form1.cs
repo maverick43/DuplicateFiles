@@ -27,9 +27,12 @@ namespace DuplicateFiles
             try
             {
                 FileStream file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+                //FileStream file2 = new FileStream(filename + "aaaa", FileMode.Create, FileAccess.Write);
                 byte[] buff = new byte[1024 * 1024];
                 file.Read(buff, 0, 1024 * 1024);
                 file.Close();
+                //file2.Write(buff, 0, buff.Length);
+                //file2.Close();
                 System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
                 byte[] retVal = md5.ComputeHash(buff);
 
@@ -51,26 +54,26 @@ namespace DuplicateFiles
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.ShowNewFolderButton = false;
-            if (strPath != "")
+            if (txtPath.Text == "" || Directory.Exists(txtPath.Text) == false)
             {
-                fbd.SelectedPath = strPath;
+                if(SelectDirectory() == false)
+                {
+                    return;
+                }
             }
-            if (fbd.ShowDialog() != DialogResult.OK)
+            else
             {
-                return;
+                strPath = txtPath.Text;
             }
             lblTime.Text = "正在检测";
             lblTime.Refresh();
-            strPath = fbd.SelectedPath;
             lstResult.Clear();
             lbGroup.Items.Clear();
             lbFiles.Items.Clear();
             lblFileCount.Text = "";
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            foreach (string strFile in Directory.GetFiles(fbd.SelectedPath))
+            foreach (string strFile in Directory.GetFiles(strPath))
             {
                 bool bAdded = false;
                 string strMd5 = GetMD5HashFromFile(strFile);
@@ -137,7 +140,7 @@ namespace DuplicateFiles
             if (lbFiles.SelectedIndex != -1)
             {
                 FileInfo fi = new FileInfo(Path.Combine(strPath, lbFiles.SelectedItem.ToString()));
-                if(!File.Exists(Path.Combine(strPath, lbFiles.SelectedItem.ToString())))
+                if (!File.Exists(Path.Combine(strPath, lbFiles.SelectedItem.ToString())))
                 {
                     MessageBox.Show("文件不存在");
                     return;
@@ -192,10 +195,37 @@ namespace DuplicateFiles
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete)
             {
                 DeleteFile();
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            lblTime.Text = "";
+        }
+
+        private void btnSelectDirectory_Click(object sender, EventArgs e)
+        {
+            SelectDirectory();
+        }
+
+        private bool SelectDirectory()
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.ShowNewFolderButton = false;
+            if (strPath != "")
+            {
+                fbd.SelectedPath = strPath;
+            }
+            if (fbd.ShowDialog() != DialogResult.OK)
+            {
+                return false;
+            }
+            strPath = fbd.SelectedPath;
+            txtPath.Text = strPath;
+            return true;
         }
     }
 }
