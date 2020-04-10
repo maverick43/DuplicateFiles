@@ -15,6 +15,7 @@ namespace DuplicateFiles
     public partial class Form1 : Form
     {
         List<List<string>> lstResult = new List<List<string>>();
+        List<string> lstMD5 = new List<string>();   //每组重复文件的MD5
         string strPath;
 
         public Form1()
@@ -56,27 +57,26 @@ namespace DuplicateFiles
         {
             if (txtPath.Text == "" || Directory.Exists(txtPath.Text) == false)
             {
-                if(SelectDirectory() == false)
+                if (SelectDirectory() == false)
                 {
                     return;
                 }
             }
-            else
-            {
-                strPath = txtPath.Text;
-            }
+            strPath = txtPath.Text;
             lblTime.Text = "正在检测";
             lblTime.Refresh();
             lstResult.Clear();
+            lstMD5.Clear();
             lbGroup.Items.Clear();
             lbFiles.Items.Clear();
             lblFileCount.Text = "";
             Stopwatch sw = new Stopwatch();
             sw.Start();
+            string strMd5 = "";
             foreach (string strFile in Directory.GetFiles(strPath))
             {
                 bool bAdded = false;
-                string strMd5 = GetMD5HashFromFile(strFile);
+                strMd5 = GetMD5HashFromFile(strFile);
                 foreach (List<string> l in lstResult)
                 {
                     if (strMd5 == l[0])
@@ -93,15 +93,18 @@ namespace DuplicateFiles
                     lstResult.Add(lstnew);
                 }
             }
+            int nCount = 0;
             foreach (List<string> l in lstResult)
             {
                 if (l.Count > 2)
                 {
-                    lbGroup.Items.Add(l[0]);
+                    nCount++;
+                    lbGroup.Items.Add(nCount.ToString());
+                    lstMD5.Add(l[0]);
                 }
             }
             //MessageBox.Show(GetMD5HashFromFile(@"D:\文档.rar"));
-            lblGroupCount.Text = String.Format("共 {0} 组重复文件", lbGroup.Items.Count.ToString());
+            lblGroupCount.Text = String.Format("共 {0} 组重复文件", lbGroup.Items.Count);
             sw.Stop();
             lblTime.Text = string.Format("用时: {0:0} 秒", sw.Elapsed.TotalSeconds);
         }
@@ -111,16 +114,31 @@ namespace DuplicateFiles
             if (lbGroup.SelectedIndex != -1)
             {
                 lbFiles.Items.Clear();
+                //TODO:显示的文件名错误
+                //foreach (List<string> l in lstResult)
+                //{
+                //    if (l[0] == lbGroup.SelectedItem.ToString())
+                //    {
+                //        for (int i = 1; i < l.Count; i++)
+                //        {
+                //            lbFiles.Items.Add(Path.GetFileName(l[i]));
+                //        }
+                //    }
+                //}
                 foreach (List<string> l in lstResult)
                 {
-                    if (l[0] == lbGroup.SelectedItem.ToString())
+                    if (l[0] == lstMD5[lbGroup.SelectedIndex])
                     {
-                        for (int i = 1; i < l.Count; i++)
+                        for (int j = 1; j < l.Count; j++)
                         {
-                            lbFiles.Items.Add(Path.GetFileName(l[i]));
+                            lbFiles.Items.Add(Path.GetFileName(l[j]));
                         }
                     }
                 }
+                //for (int i = 1; i < lstResult[lbGroup.SelectedIndex].Count; i++)
+                //{
+                //    lbFiles.Items.Add(Path.GetFileName(lstResult[lbGroup.SelectedIndex][i]));
+                //}
             }
             lblFileCount.Text = string.Format("共 {0} 个重复文件", lbFiles.Items.Count.ToString());
         }
@@ -145,7 +163,21 @@ namespace DuplicateFiles
                     MessageBox.Show("文件不存在");
                     return;
                 }
-                lblSizeValue.Text = fi.Length.ToString();
+                long FileSize = fi.Length;
+                string strFileSize = "";
+                if (FileSize > 1024 * 1024 * 1024)
+                {
+                    strFileSize = string.Format("{0} GB", ((double)FileSize / 1024 / 1024 / 1024).ToString("0.0"));
+                }
+                else if (FileSize > 1024 * 1024)
+                {
+                    strFileSize = string.Format("{0} MB", ((double)FileSize / 1024 / 1024).ToString("0.0"));
+                }
+                else if (FileSize > 1024)
+                {
+                    strFileSize = string.Format("{0} KB", ((double)FileSize / 1024).ToString("0.0"));
+                }
+                lblSizeValue.Text = strFileSize;
                 lblCreationTimeValue.Text = fi.LastWriteTime.ToString("yyyy-MM-dd HH:mm:ss");
                 lblLastWriteTimeValue.Text = fi.CreationTime.ToString("yyyy-MM-dd HH:mm:ss");
             }
@@ -176,14 +208,18 @@ namespace DuplicateFiles
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
                 {
                     File.Delete(Path.Combine(strPath, lbFiles.SelectedItem.ToString()));
-                    for (int i = 0; i < lstResult.Count; i++)
+                    int nSelectedIndex = lbGroup.SelectedIndex;
+                    int i;
+                    for (i = 0; nSelectedIndex >= 0; i++)
                     {
-                        if (lstResult[i][0].ToString() == lbGroup.SelectedItem.ToString())
+                        if (lstResult[i].Count > 2)
                         {
-                            lstResult[i].RemoveAt(lbFiles.SelectedIndex + 1);
+                            nSelectedIndex--;
                         }
                     }
+                    lstResult[i - 1].RemoveAt(lbFiles.SelectedIndex + 1);
                     lbFiles.Items.RemoveAt(lbFiles.SelectedIndex);
+                    lblFileCount.Text = string.Format("共 {0} 个重复文件", lbFiles.Items.Count);
                 }
             }
         }
@@ -203,6 +239,9 @@ namespace DuplicateFiles
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            lblSizeValue.Text = "";
+            lblCreationTimeValue.Text = "";
+            lblLastWriteTimeValue.Text = "";
             lblTime.Text = "";
         }
 
@@ -223,8 +262,7 @@ namespace DuplicateFiles
             {
                 return false;
             }
-            strPath = fbd.SelectedPath;
-            txtPath.Text = strPath;
+            txtPath.Text = fbd.SelectedPath;
             return true;
         }
     }
