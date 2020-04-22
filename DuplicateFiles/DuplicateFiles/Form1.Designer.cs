@@ -70,7 +70,7 @@
             this.lbGroup.ItemHeight = 16;
             this.lbGroup.Location = new System.Drawing.Point(12, 58);
             this.lbGroup.Name = "lbGroup";
-            this.lbGroup.Size = new System.Drawing.Size(301, 436);
+            this.lbGroup.Size = new System.Drawing.Size(154, 436);
             this.lbGroup.TabIndex = 1;
             this.lbGroup.TabStop = false;
             this.lbGroup.SelectedIndexChanged += new System.EventHandler(this.lbGroup_SelectedIndexChanged);
@@ -83,9 +83,9 @@
             this.lbFiles.Font = new System.Drawing.Font("宋体", 12F);
             this.lbFiles.FormattingEnabled = true;
             this.lbFiles.ItemHeight = 16;
-            this.lbFiles.Location = new System.Drawing.Point(319, 58);
+            this.lbFiles.Location = new System.Drawing.Point(172, 58);
             this.lbFiles.Name = "lbFiles";
-            this.lbFiles.Size = new System.Drawing.Size(381, 436);
+            this.lbFiles.Size = new System.Drawing.Size(528, 436);
             this.lbFiles.TabIndex = 2;
             this.lbFiles.TabStop = false;
             this.lbFiles.SelectedIndexChanged += new System.EventHandler(this.lbFiles_SelectedIndexChanged);
@@ -107,7 +107,7 @@
             this.lblLastWriteTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLastWriteTime.AutoSize = true;
             this.lblLastWriteTime.Font = new System.Drawing.Font("宋体", 12F);
-            this.lblLastWriteTime.Location = new System.Drawing.Point(712, 113);
+            this.lblLastWriteTime.Location = new System.Drawing.Point(712, 118);
             this.lblLastWriteTime.Name = "lblLastWriteTime";
             this.lblLastWriteTime.Size = new System.Drawing.Size(72, 16);
             this.lblLastWriteTime.TabIndex = 3;
@@ -118,7 +118,7 @@
             this.lblCreationTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCreationTime.AutoSize = true;
             this.lblCreationTime.Font = new System.Drawing.Font("宋体", 12F);
-            this.lblCreationTime.Location = new System.Drawing.Point(712, 85);
+            this.lblCreationTime.Location = new System.Drawing.Point(712, 89);
             this.lblCreationTime.Name = "lblCreationTime";
             this.lblCreationTime.Size = new System.Drawing.Size(72, 16);
             this.lblCreationTime.TabIndex = 3;
@@ -129,30 +129,33 @@
             this.lblSizeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSizeValue.AutoSize = true;
             this.lblSizeValue.Font = new System.Drawing.Font("宋体", 12F);
-            this.lblSizeValue.Location = new System.Drawing.Point(790, 60);
+            this.lblSizeValue.Location = new System.Drawing.Point(787, 60);
             this.lblSizeValue.Name = "lblSizeValue";
-            this.lblSizeValue.Size = new System.Drawing.Size(0, 16);
+            this.lblSizeValue.Size = new System.Drawing.Size(104, 16);
             this.lblSizeValue.TabIndex = 3;
+            this.lblSizeValue.Text = "lblSizeValue";
             // 
             // lblLastWriteTimeValue
             // 
             this.lblLastWriteTimeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLastWriteTimeValue.AutoSize = true;
             this.lblLastWriteTimeValue.Font = new System.Drawing.Font("宋体", 12F);
-            this.lblLastWriteTimeValue.Location = new System.Drawing.Point(790, 113);
+            this.lblLastWriteTimeValue.Location = new System.Drawing.Point(787, 118);
             this.lblLastWriteTimeValue.Name = "lblLastWriteTimeValue";
-            this.lblLastWriteTimeValue.Size = new System.Drawing.Size(0, 16);
+            this.lblLastWriteTimeValue.Size = new System.Drawing.Size(176, 16);
             this.lblLastWriteTimeValue.TabIndex = 3;
+            this.lblLastWriteTimeValue.Text = "lblLastWriteTimeValue";
             // 
             // lblCreationTimeValue
             // 
             this.lblCreationTimeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCreationTimeValue.AutoSize = true;
             this.lblCreationTimeValue.Font = new System.Drawing.Font("宋体", 12F);
-            this.lblCreationTimeValue.Location = new System.Drawing.Point(790, 85);
+            this.lblCreationTimeValue.Location = new System.Drawing.Point(787, 89);
             this.lblCreationTimeValue.Name = "lblCreationTimeValue";
-            this.lblCreationTimeValue.Size = new System.Drawing.Size(0, 16);
+            this.lblCreationTimeValue.Size = new System.Drawing.Size(168, 16);
             this.lblCreationTimeValue.TabIndex = 3;
+            this.lblCreationTimeValue.Text = "lblCreationTimeValue";
             // 
             // lblGroupCount
             // 
@@ -169,7 +172,7 @@
             this.lblFileCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblFileCount.AutoSize = true;
             this.lblFileCount.Font = new System.Drawing.Font("宋体", 12F);
-            this.lblFileCount.Location = new System.Drawing.Point(332, 503);
+            this.lblFileCount.Location = new System.Drawing.Point(169, 503);
             this.lblFileCount.Name = "lblFileCount";
             this.lblFileCount.Size = new System.Drawing.Size(0, 16);
             this.lblFileCount.TabIndex = 5;
@@ -212,7 +215,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 12F);
-            this.label2.Location = new System.Drawing.Point(317, 39);
+            this.label2.Location = new System.Drawing.Point(169, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 16);
             this.label2.TabIndex = 6;
